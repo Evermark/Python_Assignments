@@ -1,0 +1,17 @@
+Use Twitter (selecting Twitter database)
+
+SELECT * FROM users (displays every value within the list from table users)
+
+SELECT tweet FROM tweets WHERE ID = 2 (display tweet from tweet ID 2)
+
+SELECT * FROM users ORDER BY birthday DESC (display users from Youngest to Oldest)
+
+SELECT * FROM users LEFT JOIN tweets ON users.id = tweets.user_id WHERE users.id = 4
+	(display tweets to user for user id 4)
+
+SELECT concat('Mr.', ' ', first_name, ' ', last_name) AS Full_Name FROM users (use Concat function to display list ‘Mr. first name, last name’ under category of ‘Full_Name’)
+
+
+
+
+

@@ -1,0 +1,13 @@
+h1, h2{
+  margin: 50px auto;
+  text-align: center;
+  outline: 2px solid black;
+}
+h1{
+  font-size: 22px;
+  width: 350px;
+}
+h2{
+  font-size: 40px;
+  width: 300px;
+}

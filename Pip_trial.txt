@@ -1,3 +1,0 @@
-Pip Trial
-
-The pip install Django installs the packages for the Django module. pip list is a command to list all of the packages within the module. This can help me identify what packages I have and give me an idea of the areas I am working with. The freeze command lists the packages in requirements format. When I made the freeze command on my desktop a requirements text file was created. This is probably a list of the packages required. The pip search returns a list of the packages and a description of each package.

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Random Word</title>
+    {% load static %}
+  </head>
+  <body>
+    <p> Random Word attempt: {{attemt.session.request}} </p>
+    <h1>{{word}}</h1>
+    <form action="random_word/index.html" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Generate">
+    </form>
+      {% csrf_token %}
+    <form action="random_word/index.html" method="post">
+    <input type="submit" value="Reset">
+    </form>
+  </body>
+</html>
