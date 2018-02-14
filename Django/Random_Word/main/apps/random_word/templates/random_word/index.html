@@ -6,14 +6,14 @@
     {% load static %}
   </head>
   <body>
-    <p> Random Word attempt: {{attemt.session.request}} </p>
+    <p> Random Word attempt: {{request.session.attempt}} </p>
     <h1>{{word}}</h1>
-    <form action="random_word/index.html" method="post">
+    <form action="random_word/generate" method="post">
       {% csrf_token %}
       <input type="submit" value="Generate">
     </form>
       {% csrf_token %}
-    <form action="random_word/index.html" method="post">
+    <form action="random_word/reset" method="post">
     <input type="submit" value="Reset">
     </form>
   </body>
