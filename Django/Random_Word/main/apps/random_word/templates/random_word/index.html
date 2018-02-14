@@ -8,12 +8,11 @@
   <body>
     <p> Random Word attempt: {{request.session.attempt}} </p>
     <h1>{{word}}</h1>
-    <form action="random_word/generate" method="post">
+    <form action="{% url 'rw:generate' %}" method="post">
       {% csrf_token %}
-      <input type="submit" value="Generate">
-    </form>
+      <input type="submit" value="Generate">  
+    <form action="{% url 'rw:reset' %}" method="post">
       {% csrf_token %}
-    <form action="random_word/reset" method="post">
     <input type="submit" value="Reset">
     </form>
   </body>
