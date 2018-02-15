@@ -4,11 +4,11 @@ def survey(request):
     return render(request, 'survey_form/input.html')
 
 def process(request):
-    request.session['Name'] = request.post['name']
-    request.session['Dojo_Location'] = request.post['city']
-    request.session['Language'] = request.post['language']
-    request.session['Comments'] = request.post['comments']
-    return redirect('/result')
+    request.session['Name'] = request.POST['name']
+    request.session['Dojo_Location'] = request.POST['city']
+    request.session['Language'] = request.POST['language']
+    request.session['Comments'] = request.POST['comments']
+    return redirect('survey_form/result')
 
 def result(request):
     return render(request, '/survey_form/result.html')
