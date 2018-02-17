@@ -5,6 +5,7 @@
     <title>Survey Form</title>
   </head>
   <body>
+    <center>
     <form action='/survey_form/process' method='POST'>
       {% csrf_token %}
         Your Name: <input type='text' name="name">
@@ -23,5 +24,7 @@
         Comments: <input type='text' name="comments">
         <input type='submit' value='button'>
     </form>
+    </center>
   </body>
+
 </html>

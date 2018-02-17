@@ -8,8 +8,8 @@ def process(request):
     request.session['Dojo_Location'] = request.POST['city']
     request.session['Language'] = request.POST['language']
     request.session['Comments'] = request.POST['comments']
-    return redirect('survey_form/result')
+    return redirect('/result')
 
 def result(request):
-    return render(request, '/survey_form/result.html')
+    return render(request, 'survey_form/result.html')
 # Create your views here.
