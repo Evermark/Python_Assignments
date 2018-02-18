@@ -5,20 +5,30 @@
     <title>Session Words</title>
   </head>
   <body>
-    {% csrf_token %}
     <div class="left">
       <h1>Add a new word:</h1>
-      <form action="add_words" method="POST">
+      <form action='/add_words' method="POST">
+        {% csrf_token %}
         <input type="text" name="word">
         <h2>Choose Color</h2>
-        <input type="radio" id = "blue" value="blue">Blue
-        <input type="radio" id = "green" value="green">Green
-        <input type="radio" id = "red" value="red">Red
+        <input checked="checked" type="radio" name="color " value="blue">Blue
+        <input type="radio" name="color" value="green">Green
+        <input type="radio" name="color" value="red">Red
         <input type="checkbox" value="size"> Show in BIG font!
-        <input type="submit" name="" value="Add to Session">
+        <input type="submit" value="Add to Session">
       </form>
     </div>
     <div class="right">
-      <p>{{request.session.word}} {{time}}</p>
+    {% if request.session.color == blue %}
+      <div class="Blue"><p>{{request.session.word}}</p></div>{{time}}
+    {% elif request.session.color == green %}
+      <div class="Green"><p>{{request.session.word}}</p></div>{{time}}
+    {% elif request.session.color == red %}
+      <div class="Red"><p>{{request.session.word}}</p></div>{{time}}
+    {% else %}
+      <p>{{request.session.word}}{{time}}</p>
+    {% endif %}
+    <a href="/clear"><button>Clear Session</button></a>
+    </div>
   </body>
 </html>

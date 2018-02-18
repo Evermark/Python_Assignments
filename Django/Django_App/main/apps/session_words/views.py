@@ -7,15 +7,14 @@ def index(request):
     return render(request, 'session_words/words.html')
 
 def add_words(request):
-    request.session['word'] = request.post['word']
-    request.session['color'] = request.post['color']
-    request.session['size'] = request.post['size']
+    print 'got word'
+    request.session['word'] = request.POST['word']
+    # request.session['color'] = request.POST['color']
+    # request.session['size'] = request.POST['size']
     context = {
-    "time": now.strftime("%b %d, %Y %H:%M %p")}
+    "time": datetime.now().strftime("%b %d, %Y %H:%M %p")}
     return redirect('/session_words')
 
 def clear(request):
-    request.session['word'] = ''
-    request.session['color'] = ''
-    request.session['size'] = ''
-    return render(request, 'session_words/words.html')
+    request.session.clear()
+    return redirect('/session_words')

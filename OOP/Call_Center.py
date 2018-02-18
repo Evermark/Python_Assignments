@@ -25,30 +25,36 @@ Methods:
 • remove: removes the call from the beginning of the list (index 0).
 • info: prints the name and phone number for each call in the queue as well as the length of the queue.
 
+from datetime import datetime
+
 class Call(object):
-    def __init__(self, id, name, phone_number, call_time, call_reason):
-        self.id = id
+    num_calls = 0
+    def __init__(self, name, phone_number, call_reason):
         self.name = name
         self.phone_number = phone_number
-        self.call_time = call_time
+        self.call_time = datetime.now()
         self.call_reason = call_reason
+        self.id = Call.num_calls
+
+        Call.num_calls += 1
 
     def display_call(self):
-        print self.id
-        print self.name
-        print self.phone_number
-        print self.call_time
-        print self.call_reason
+        for attr, val in self.__dict__.iteritems():
+            if attr == "call_time":
+                print "{}: {} ".format(attr, val.strftime("%b-%a-%I"))
+            else:
+                print "{}: {}".format(attr, val)
 
 class CallCenter(object):
     def __init__(self, calls, queue_size):
-        self.calls = list(calls)
-        self.queue_size = len(list(calls))
-    def add(self):
-        self.calls[len(self.calls)] += self.calls
-    def remove(self):
-        self.calls[0] -= self.calls
+        self.calls = []
+        self.queue_size = self.the_queue_size()
+    def the_queue_size(self):
+        return len(self.calls)
+    def add(self, new_call):
+        self.calls.append(new_call)
+    def remove(self, re_call):
+        self.calls.remove(re_call)
     def info(self):
-        print self.name
-        print self.phone_number
-        print self.queue_size
+        for call in self.calls:
+            call.display_call()
