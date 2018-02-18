@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Session Words</title>
+    <link rel="stylesheet" href={% static "/session_words/css/style.css" %}>
+    {% load static %}
   </head>
   <body>
     <div class="left">
@@ -10,24 +12,23 @@
       <form action='/add_words' method="POST">
         {% csrf_token %}
         <input type="text" name="word">
-        <h2>Choose Color</h2>
-        <input checked="checked" type="radio" name="color " value="blue">Blue
-        <input type="radio" name="color" value="green">Green
-        <input type="radio" name="color" value="red">Red
-        <input type="checkbox" value="size"> Show in BIG font!
-        <input type="submit" value="Add to Session">
+        <div class="word_form">
+          <h2>Choose Color</h2>
+          <input type="radio" name="color" value="blue" checked="checked">Blue<br>
+          <input type="radio" name="color" value="green">Green<br>
+          <input type="radio" name="color" value="red">Red<br>
+        </div>
+        <div class="word_form">
+          <input type="checkbox" name="big"> Show in BIG font!
+        </div>
+        <div class="word_form">
+          <input type="submit" value="Add to Session">
+        </div>
       </form>
     </div>
     <div class="right">
-    {% if request.session.color == blue %}
-      <div class="Blue"><p>{{request.session.word}}</p></div>{{time}}
-    {% elif request.session.color == green %}
-      <div class="Green"><p>{{request.session.word}}</p></div>{{time}}
-    {% elif request.session.color == red %}
-      <div class="Red"><p>{{request.session.word}}</p></div>{{time}}
-    {% else %}
-      <p>{{request.session.word}}{{time}}</p>
-    {% endif %}
+      {% for data in request.session.info %}
+      <p class="{{% infor.color %}}, {{% info.big %}}"> {{% info.word %}} <span class="regular_text"> {{% info.time %}}</span></p>
     <a href="/clear"><button>Clear Session</button></a>
     </div>
   </body>
