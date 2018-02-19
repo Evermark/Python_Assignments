@@ -1,0 +1,12 @@
+td{
+  text-align: left;
+  padding: 10px 100px 10px 10px;
+  outline: 2px solid black;
+}
+th{
+  text-align: left;
+  outline: 2px solid black
+}
+table{
+  outline: 2px solid black;
+}
