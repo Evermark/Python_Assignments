@@ -30,6 +30,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^', include('apps.blogs_app.urls')),
-    url(r'^blogs_app/', include('apps.blogs_app.urls')),
-    url(r'^', include('apps.session_words.urls'))
+    url(r'^', include('apps.surveys.urls')),
+    url(r'^', include('apps.users.urls')),
+
 ]
