@@ -10,6 +10,16 @@ from django.db import models
 # Have it include first_name, last_name of each ninja in the dojo.
 # Each dojo can have multiple ninjas and each ninja belongs to a specific dojo.
 
+# Using Django Shell:
+# Create 3 dojos
+# Delete the three dojos you created (e.g. Dojo.objects.get(id=1).delete())
+# Create 3 additional dojos by using Dojo.objects.create
+# Create 3 ninjas that belong to the first dojo you created.
+# Create 3 more ninjas and have them belong to the second dojo you created.
+# Create 3 more ninjas and have them belong to the third dojo you created.
+# Be able to retrieve all ninjas that belong to the first Dojo
+# Be able to retrieve all ninjas that belong to the last Dojo
+
 class Dojo(models.Model):
     name = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
