@@ -1,21 +1,8 @@
-.left .right{
+.separator{
+  width: 600px;
+  height: 1000px;
   display: inline-block;
-  width: 450px
-}
-.word_form{
-  display: block;
-  margin: 20px
-}
-.blue{
-  color: blue
-}
-.green{
-  color: green
-}
-.red{
-  color:red
-}
-.regular_test{
-  font-size: 14px;
-  color:black
+  border-style: solid;
+  vertical-align: top;
+  padding-left: 20px;
 }

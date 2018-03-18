@@ -7,28 +7,23 @@
     <link rel="stylesheet" href="{% static '/session_words/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
   </head>
   <body>
-    <div class="left">
+    <div class="separator">
       <h1>Add a new word:</h1>
       <form action='/add_words' method="POST">
         {% csrf_token %}
         <input type="text" name="word">
-        <div class="word_form">
           <h2>Choose Color</h2>
           <input type="radio" name="color" value="blue" checked="checked">Blue<br>
           <input type="radio" name="color" value="green">Green<br>
           <input type="radio" name="color" value="red">Red<br>
-        </div>
-        <div class="word_form">
           <input type="checkbox" name="big"> Show in BIG font!
-        </div>
-        <div class="word_form">
           <input type="submit" value="Add to Session">
-        </div>
       </form>
     </div>
-    <div class="right">
+    <div class="separator">
       {% for data in request.session.info %}
-      <p class="{{% infor.color %}}, {{% info.big %}}"> {{% info.word %}} <span class="regular_text"> {{% info.time %}}</span></p>
+      <span style="color:{{info.color}}"><p>{{info.word}}, {{info.time}}</p></span>
+      {% endfor %}
     <a href="/clear"><button>Clear Session</button></a>
     </div>
   </body>
