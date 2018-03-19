@@ -14,4 +14,4 @@ def random_word(request):
 
 def reset(request):
     request.session['attempt'] = 0
-    return redirect('/random_word/reset')
+    return redirect('/random_word')

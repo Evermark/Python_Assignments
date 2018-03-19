@@ -21,7 +21,7 @@
       </form>
     </div>
     <div class="separator">
-      {% for data in request.session.info %}
+      {% for info in request.session.info %}
       <span style="color:{{info.color}}"><p>{{info.word}}, {{info.time}}</p></span>
       {% endfor %}
     <a href="/clear"><button>Clear Session</button></a>

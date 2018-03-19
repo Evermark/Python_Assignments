@@ -32,5 +32,6 @@ urlpatterns = [
     url(r'^', include('apps.blogs_app.urls')),
     url(r'^', include('apps.surveys.urls')),
     url(r'^', include('apps.users.urls')),
-
+    url(r'^', include('apps.ninja_gold.urls')),
+    
 ]
