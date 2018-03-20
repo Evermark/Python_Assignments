@@ -32,6 +32,7 @@ class Author(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email_address = models.CharField(max_length=255)
-    books = models.ManyToManyField(Book, related_name= "Authors")
+    notes = models.TextField(blank=True)
+    books = models.ManyToManyField(Book, related_name= "authors")
     created_at = models.DateTimeField(auto_now_add = True)
     created_at = models.DateTimeField(auto_now = True)
