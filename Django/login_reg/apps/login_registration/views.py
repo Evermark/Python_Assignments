@@ -32,7 +32,7 @@ def login(request):
 
 def success(request, user_id):
     context = {
-        "user": User.object.get(id=user_id)
+        "user": User.objects.get(id=user_id)
     }
     return render(request, "login_registration/success.html", context)
 # Create your views here.
