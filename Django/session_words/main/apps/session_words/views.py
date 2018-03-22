@@ -19,7 +19,6 @@ def add_words(request):
     request.session['color'] = request.POST['color']
     print new_words
     print request.session['info']
-    #add logic for adding to list
     return redirect('/')
 
 def clear(request):

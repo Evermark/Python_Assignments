@@ -1,0 +1,9 @@
+.wrapper{
+  width: 700px;
+  padding-left: 50px;
+}
+
+label{
+  display: block;
+  padding: 5px 0px;
+}

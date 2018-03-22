@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>login_registration</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login_registration/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Registration</h1>
+        <form action="/registration" method="POST">
+          {% csrf_token %}
+          <label>First Name:<input type="text" name="first_name"></label>
+          <label>Last Name:<input type="text" name="last_name"></label>
+          <label>Email:<input type="text" name="email"></label>
+          <label>Password:<input type="password" name="password"></label>
+          <label>Confirm Password:<input type="password" name="confirm_pw"></label>
+          <input type="submit" value="Register">
+        </form>
+      <h2>Login</h2>
+        <form action="/login" method="POST">
+          {% csrf_token %}
+          <label>Email:<input type="text" name="email"></label>
+          <label>Password:<input type="password" name="password"></label>
+          <input type="submit" value="login">
+        </form>
+    </div>
+  </body>
+</html>
