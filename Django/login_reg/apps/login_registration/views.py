@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, HttpResponse
+from .models import *
 
 def index(request):
+    if "user_id" not in request.session:
+        request.session["user_id"] = ""
     return render(request, "login_registration/index.html")
 
 def registration(request):
