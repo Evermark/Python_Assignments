@@ -8,6 +8,11 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 class UserManager(models.Manager):
     def reg_validator(self, postData):
         errors = {}
+        try:
+            if User.objects.get(email=postDate['email']):
+                errors['registration error'] = "User already exists. Please login."
+        except:
+            pass
         if len(postData['first_name']) < 2:
             errors["first name"] = "First name must be more than 2 characters."
         if len(postData['last_name']) < 2:
@@ -21,15 +26,16 @@ class UserManager(models.Manager):
         return errors
 
     def pw_hasher(self, pwd):
-        Password = bcrypt.hashpw(pwd.encode(),bcrypt.gensalt())
+        password = bcrypt.hashpw(pwd.encode(),bcrypt.gensalt())
         return Password
 
     def login_validator(self, postData):
         errors = {}
-        for key in postData:
-            if postData['key'] == "":
-                errors["empty_field"] = "please input email and password."
-            return errors
+        if postData['email'] == "":
+            errors["empty email"] = "Please enter email address."
+        if postData['password'] == "":
+            errors["empty password"] = "Please enter password."
+        return errors
 
         #Find User in DB
         this_user = User.objects.filter(Email=postData['Email'])

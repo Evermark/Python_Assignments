@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
+from django.contrib import messages
 from .models import *
 
 def index(request):
@@ -16,8 +17,10 @@ def registration(request):
     else:
         new_user = User.objects.create(first_name = request.POST["first_name"], last_name = request.POST["last_name"],
         email = request.POST["email"], password = request.POST["password"])
-        print request.POST
-    return redirect ('/success')
+
+        request.session['first_name'] = new_user.first_name
+        request.session['user_id'] = new_user.id
+    return redirect ('/(?P<user_id>\d+)/success')
 
 def login(request):
     #login user via login_validator
@@ -25,14 +28,16 @@ def login(request):
     if len(errors):
             for tag, error in errors.iteritems():
                 messages.error(request, error, extra_tags=tag)
-            return redirect('/success')
+            return redirect('/')
     else:
-        current_user = User.objects.get(first_name=request.POST["first_name"])
-    return redirect ('/success')
+        current_user = User.objects.get(email=request.POST["email"])
+        request.session['user_id'] = current_user.id
+        request.session['first_name'] = current_user.first_name
+
+    return redirect ('/(?P<user_id>\d+)/success')
 
 def success(request, user_id):
     context = {
         "user": User.objects.get(id=user_id)
     }
     return render(request, "login_registration/success.html", context)
-# Create your views here.
