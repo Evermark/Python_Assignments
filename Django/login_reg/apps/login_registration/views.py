@@ -20,7 +20,7 @@ def registration(request):
 
         request.session['first_name'] = new_user.first_name
         request.session['user_id'] = new_user.id
-    return redirect ('/(?P<user_id>\d+)/success')
+    return redirect ('/success')
 
 def login(request):
     #login user via login_validator
@@ -34,10 +34,11 @@ def login(request):
         request.session['user_id'] = current_user.id
         request.session['first_name'] = current_user.first_name
 
-    return redirect ('/(?P<user_id>\d+)/success')
+    return redirect ('/success')
 
-def success(request, user_id):
+def success(request):
+    user = User.objects.get(id=request.session['user_id'])
     context = {
-        "user": User.objects.get(id=user_id)
+        "user": User.objects.get(id=request.session['user_id'])
     }
     return render(request, "login_registration/success.html", context)
