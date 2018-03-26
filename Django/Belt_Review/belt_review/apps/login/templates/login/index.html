@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Login_Reg</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to BookWorm</h1>
+      <form style= "width: 400px; padding: 10px;" action="/register" method="POST">
+        <fieldset>
+          <legend>Register</legend>
+          <label>Name: <input type="text" name="name" ></label>
+          <p>Must be at least 4 characters.</p>
+          <label>Alias: <input type="text" name="alias" ></label>
+          <p>Must be at least 4 characters.</p>
+          <label>Email: <input type="text" name="email" ></label>
+          <label>Password: <input type="password" name="password" ></label>
+          <p>Must be at least 8 characters.</p>
+          <label>Confirm Password: <input type="password" name="confirm_pw" ></label>
+          <input style="display: block;" type="submit" name="register" value="register">
+        </fieldset>
+      </form>
+      <form style="width: 300px; padding: 10px;"action="/login" method="POST">
+        <fieldset>
+          <legend>Login</legend>
+          <label>Email: <input type="text" name="email"></label>
+          <label>Password: <input type="password" name="password"></label>
+          <input type="submit" name="login" value="login">
+        </fieldset>
+      </form>
+    </div>
+  </body>
+</html>

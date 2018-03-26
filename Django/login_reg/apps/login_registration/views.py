@@ -37,7 +37,6 @@ def login(request):
     return redirect ('/success')
 
 def success(request):
-    user = User.objects.get(id=request.session['user_id'])
     context = {
         "user": User.objects.get(id=request.session['user_id'])
     }
